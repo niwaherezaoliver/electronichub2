@@ -138,7 +138,7 @@ class ProductDetailScreen extends StatelessWidget {
                     children: [
                       if (product.hasDiscount)
                         Text(
-                          '\$${product.price.toStringAsFixed(2)}',
+                          'UGX ${product.price.toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontSize: 18,
                             color: Colors.grey,
@@ -147,7 +147,7 @@ class ProductDetailScreen extends StatelessWidget {
                         ),
                       if (product.hasDiscount) const SizedBox(width: 8),
                       Text(
-                        '\$${product.effectivePrice.toStringAsFixed(2)}',
+                                                  'UGX ${product.effectivePrice.toStringAsFixed(2)}',
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -166,7 +166,7 @@ class ProductDetailScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
-                            'SAVE \$${(product.price - product.discountPrice!).toStringAsFixed(2)}',
+                            'SAVE UGX ${(product.price - product.discountPrice!).toStringAsFixed(2)}',
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12,
@@ -209,7 +209,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   _buildFeature(
                     Icons.check_circle,
-                    'Free shipping on orders over \$100',
+                    'Free shipping on orders over UGX 100',
                   ),
                   _buildFeature(Icons.check_circle, '30-day return policy'),
 

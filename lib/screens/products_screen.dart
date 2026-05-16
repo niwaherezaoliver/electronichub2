@@ -363,7 +363,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     children: [
                       if (product.hasDiscount)
                         Text(
-                          '\$${product.price.toStringAsFixed(0)}',
+                          'UGX ${product.price.toStringAsFixed(0)}',
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey[500],
@@ -372,7 +372,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         ),
                       if (product.hasDiscount) const SizedBox(width: 4),
                       Text(
-                        '\$${product.effectivePrice.toStringAsFixed(0)}',
+                                                  'UGX ${product.effectivePrice.toStringAsFixed(0)}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

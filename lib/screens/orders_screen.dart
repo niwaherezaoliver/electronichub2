@@ -234,7 +234,7 @@ class OrdersScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '\$${(item.product.effectivePrice * item.quantity).toStringAsFixed(2)}',
+                          'UGX ${(item.product.effectivePrice * item.quantity).toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 13,
@@ -249,7 +249,7 @@ class OrdersScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Subtotal'),
-                    Text('\$${order.totalAmount.toStringAsFixed(2)}'),
+                    Text('UGX ${order.totalAmount.toStringAsFixed(2)}'),
                   ],
                 ),
                 const SizedBox(height: 4),
@@ -268,7 +268,7 @@ class OrdersScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Tax (8%)'),
-                    Text('\$${(order.totalAmount * 0.08).toStringAsFixed(2)}'),
+                    Text('UGX ${(order.totalAmount * 0.08).toStringAsFixed(2)}'),
                   ],
                 ),
                 const Divider(height: 16),
@@ -283,7 +283,7 @@ class OrdersScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '\$${(order.totalAmount * 1.08).toStringAsFixed(2)}',
+                      'UGX ${(order.totalAmount * 1.08).toStringAsFixed(2)}',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -367,7 +367,7 @@ class OrdersScreen extends StatelessWidget {
                         child: Text('${item.product.name} x${item.quantity}'),
                       ),
                       Text(
-                        '\$${(item.product.effectivePrice * item.quantity).toStringAsFixed(2)}',
+                        'UGX ${(item.product.effectivePrice * item.quantity).toStringAsFixed(2)}',
                       ),
                     ],
                   ),
@@ -379,7 +379,7 @@ class OrdersScreen extends StatelessWidget {
                 children: [
                   const Text('Total'),
                   Text(
-                    '\$${(order.totalAmount * 1.08).toStringAsFixed(2)}',
+                    'UGX ${(order.totalAmount * 1.08).toStringAsFixed(2)}',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],

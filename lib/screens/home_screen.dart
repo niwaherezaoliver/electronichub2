@@ -234,7 +234,7 @@ class HomeScreen extends StatelessWidget {
                           'Order #${latestOrder.id.substring(latestOrder.id.length - 6)}',
                         ),
                         subtitle: Text(
-                          '${latestOrder.items.length} items - \$${latestOrder.totalAmount.toStringAsFixed(2)}',
+                          '${latestOrder.items.length} items - UGX ${latestOrder.totalAmount.toStringAsFixed(2)}',
                         ),
                         trailing: Text(
                           latestOrder.dateTime.day.toString(),

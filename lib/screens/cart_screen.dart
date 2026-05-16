@@ -163,7 +163,7 @@ class CartScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '\$${product.effectivePrice.toStringAsFixed(2)}',
+                                          'UGX ${product.effectivePrice.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).colorScheme.primary,
@@ -172,7 +172,7 @@ class CartScreen extends StatelessWidget {
                   ),
                   if (product.hasDiscount)
                     Text(
-                      '\$${product.price.toStringAsFixed(2)}',
+                      'UGX ${product.price.toStringAsFixed(2)}',
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.grey,
@@ -230,7 +230,7 @@ class CartScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '\$${itemTotal.toStringAsFixed(2)}',
+                  'UGX ${itemTotal.toStringAsFixed(2)}',
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -263,7 +263,7 @@ class CartScreen extends StatelessWidget {
   }
 
   Widget _buildCartSummary(BuildContext context, CartProvider cart) {
-    final shipping = cart.totalAmount > 100 ? 0.0 : 9.99;
+    final shipping = cart.totalAmount > 365000 ? 0.0 : 36500.0;
     final tax = cart.totalAmount * 0.08;
     final total = cart.totalAmount + shipping + tax;
 
@@ -286,7 +286,7 @@ class CartScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text('Subtotal'),
-              Text('\$${cart.totalAmount.toStringAsFixed(2)}'),
+              Text('UGX ${cart.totalAmount.toStringAsFixed(2)}'),
             ],
           ),
           Row(
@@ -294,7 +294,7 @@ class CartScreen extends StatelessWidget {
             children: [
               const Text('Shipping'),
               Text(
-                shipping == 0 ? 'FREE' : '\$${shipping.toStringAsFixed(2)}',
+                shipping == 0 ? 'FREE' : 'UGX ${shipping.toStringAsFixed(2)}',
                 style: TextStyle(
                   color: shipping == 0 ? Colors.green : null,
                   fontWeight: shipping == 0 ? FontWeight.w500 : null,
@@ -309,7 +309,7 @@ class CartScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Add \$${(100 - cart.totalAmount).toStringAsFixed(2)} more for FREE shipping',
+                    'UGX ${(100000 - cart.totalAmount).toStringAsFixed(2)} more for FREE shipping',
                     style: const TextStyle(fontSize: 12, color: Colors.orange),
                   ),
                 ],
@@ -319,7 +319,7 @@ class CartScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text('Tax (8%)'),
-              Text('\$${tax.toStringAsFixed(2)}'),
+              Text('UGX ${tax.toStringAsFixed(2)}'),
             ],
           ),
           const Divider(height: 24),
@@ -331,7 +331,7 @@ class CartScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
-                '\$${total.toStringAsFixed(2)}',
+                'UGX ${total.toStringAsFixed(2)}',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -424,7 +424,7 @@ class CartScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Total: \$${total.toStringAsFixed(2)}',
+                    'Total: UGX ${total.toStringAsFixed(2)}',
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
