@@ -14,6 +14,12 @@ class HomeScreen extends StatelessWidget {
         title: const Text('ElectronicHub'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
+          if (Provider.of<AuthProvider>(context).isAdmin)
+            IconButton(
+              icon: const Icon(Icons.admin_panel_settings),
+              onPressed: () => Navigator.pushNamed(context, '/admin'),
+              tooltip: 'Admin Dashboard',
+            ),
           Consumer<CartProvider>(
             builder: (context, cart, child) {
               return Stack(
@@ -129,37 +135,48 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Quick actions
-            const Text(
-              'Quick Actions',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: _QuickActionCard(
-                    icon: Icons.explore,
-                    title: 'Browse',
-                    subtitle: 'Products',
-                    onTap: () => Navigator.pushNamed(context, '/products'),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Consumer<CartProvider>(
-                    builder: (context, cart, child) {
-                      return _QuickActionCard(
-                        icon: Icons.shopping_cart,
-                        title: 'My Cart',
-                        subtitle: '${cart.itemCount} items',
-                        onTap: () => Navigator.pushNamed(context, '/cart'),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+// Quick actions
+             const Text(
+               'Quick Actions',
+               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+             ),
+             const SizedBox(height: 12),
+             Row(
+               children: [
+                 Expanded(
+                   child: _QuickActionCard(
+                     icon: Icons.explore,
+                     title: 'Browse',
+                     subtitle: 'Products',
+                     onTap: () => Navigator.pushNamed(context, '/products'),
+                   ),
+                 ),
+                 const SizedBox(width: 12),
+                 Expanded(
+                   child: Consumer<CartProvider>(
+                     builder: (context, cart, child) {
+                       return _QuickActionCard(
+                         icon: Icons.shopping_cart,
+                         title: 'My Cart',
+                         subtitle: '${cart.itemCount} items',
+                         onTap: () => Navigator.pushNamed(context, '/cart'),
+                       );
+                     },
+                   ),
+                 ),
+               ],
+             ),
+             const SizedBox(height: 12),
+             if (!Provider.of<AuthProvider>(context).isAdmin)
+               SizedBox(
+                 width: double.infinity,
+                 child: _QuickActionCard(
+                   icon: Icons.location_on,
+                   title: 'Find Us',
+                   subtitle: 'HQ Location in Mbarara',
+                   onTap: () => Navigator.pushNamed(context, '/location'),
+                 ),
+               ),
             const SizedBox(height: 24),
 
             // Featured categories

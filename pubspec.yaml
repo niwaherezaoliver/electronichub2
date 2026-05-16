@@ -43,6 +43,8 @@ dependencies:
   # Location & Maps (Geolocation for all platforms)
   geolocator: ^11.0.0
   geocoding: ^3.0.0
+  flutter_map: ^7.0.0
+  latlong2: ^0.9.0
   # google_maps_flutter only works on mobile; for web, we would use different approach
 
 dev_dependencies:

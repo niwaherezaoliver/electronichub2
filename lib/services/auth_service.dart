@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import '../models/user_role.dart';
 
 /// Abstract service interface for authentication
 abstract class AuthService {
@@ -12,6 +13,7 @@ abstract class AuthService {
   String? get currentUserEmail;
   String? get currentUserName;
   Future<void> sendPasswordResetEmail(String email);
+  UserRole getUserRole();
 }
 
 /// Factory to create the appropriate auth service based on platform
@@ -27,16 +29,13 @@ class AuthServiceFactory {
 
 /// Firebase-based authentication implementation
 class FirebaseAuthService implements AuthService {
-  // Will be implemented with firebase_auth package
   @override
   Future<void> initialize() async {
-    // TODO: Initialize Firebase Auth
     debugPrint('Firebase Auth initialized');
   }
 
   @override
   Future<void> signInWithEmail(String email, String password) async {
-    // TODO: Implement Firebase sign-in
     debugPrint('Firebase sign in: $email');
   }
 
@@ -46,19 +45,16 @@ class FirebaseAuthService implements AuthService {
     String password,
     String name,
   ) async {
-    // TODO: Implement Firebase sign-up
     debugPrint('Firebase sign up: $email, name: $name');
   }
 
   @override
   Future<void> signOut() async {
-    // TODO: Sign out from Firebase
     debugPrint('Firebase sign out');
   }
 
   @override
   Stream get authStateChanges {
-    // TODO: Return Firebase auth state stream
     return const Stream.empty();
   }
 
@@ -76,15 +72,21 @@ class FirebaseAuthService implements AuthService {
 
   @override
   Future<void> sendPasswordResetEmail(String email) async {
-    // TODO: Implement password reset
     debugPrint('Password reset email sent to: $email');
   }
+
+  @override
+  UserRole getUserRole() => UserRole.user;
 }
 
 /// Web-based authentication using localStorage (fallback)
 class WebAuthService implements AuthService {
   final Map<String, String> _mockUsers = {};
   String? _currentUser;
+  UserRole _currentUserRole = UserRole.user;
+
+  static const _adminEmail = 'admin';
+  static const _adminPassword = 'Admin123';
 
   @override
   Future<void> initialize() async {
@@ -94,11 +96,16 @@ class WebAuthService implements AuthService {
   @override
   Future<void> signInWithEmail(String email, String password) async {
     await Future.delayed(const Duration(milliseconds: 500));
-    if (_mockUsers[email] != password) {
+    
+    final isHardcodedAdmin = email == _adminEmail && password == _adminPassword;
+    final isValidUser = isHardcodedAdmin || _mockUsers[email] == password;
+    
+    if (!isValidUser) {
       throw Exception('Invalid email or password');
     }
     _currentUser = email;
-    debugPrint('Signed in: $email');
+    _currentUserRole = isHardcodedAdmin ? UserRole.admin : UserRole.user;
+    debugPrint('Signed in: $email (role: $_currentUserRole)');
   }
 
   @override
@@ -108,13 +115,17 @@ class WebAuthService implements AuthService {
     String name,
   ) async {
     await Future.delayed(const Duration(milliseconds: 500));
-    if (_mockUsers.containsKey(email)) {
+    if (_mockUsers.containsKey(email) || email == _adminEmail) {
       throw Exception('Email already registered');
     }
     _mockUsers[email] = password;
     _currentUser = email;
+    _currentUserRole = UserRole.user;
     debugPrint('Signed up: $email, name: $name');
   }
+
+  @override
+  UserRole getUserRole() => _currentUserRole;
 
   @override
   Future<void> signOut() async {

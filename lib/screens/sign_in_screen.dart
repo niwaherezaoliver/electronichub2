@@ -41,6 +41,7 @@ class _SignInScreenState extends State<SignInScreen> {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
+    if (value == 'admin') return null;
     final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
     if (!emailRegex.hasMatch(value)) {
       return 'Please enter a valid email';

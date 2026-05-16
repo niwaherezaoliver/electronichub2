@@ -8,6 +8,8 @@ import 'screens/products_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/orders_screen.dart';
+import 'screens/admin_screen.dart';
+import 'screens/location_screen.dart';
 import 'providers/cart_provider.dart';
 import 'providers/orders_provider.dart';
 import 'providers/auth_provider.dart';
@@ -54,6 +56,8 @@ class MyApp extends StatelessWidget {
           ),
           '/cart': (context) => const CartScreen(),
           '/orders': (context) => const OrdersScreen(),
+          '/admin': (context) => const AdminScreen(),
+          '/location': (context) => const LocationScreen(),
         },
       ),
     );

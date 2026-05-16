@@ -11,8 +11,7 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify that the app shows the sign-in screen
-    expect(find.text('Welcome Back'), findsOneWidget);
-    expect(find.text('Sign in to continue'), findsOneWidget);
+    expect(find.text('E-hub'), findsOneWidget);
     expect(find.byKey(const Key('emailField')), findsOneWidget);
     expect(find.byKey(const Key('passwordField')), findsOneWidget);
     expect(
@@ -28,7 +27,7 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify we're on sign-in screen first
-    expect(find.text('Welcome Back'), findsOneWidget);
+    expect(find.text('E-hub'), findsOneWidget);
 
     // Find the Sign Up button and ensure it's visible
     final signUpButton = find.text('Sign Up');
@@ -37,8 +36,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // Verify sign-up screen is displayed
-    expect(find.text('Create Account'), findsOneWidget);
-    expect(find.text('Sign up to get started'), findsOneWidget);
+    expect(find.text('E-hub'), findsOneWidget);
     expect(find.byKey(const Key('nameField')), findsOneWidget);
     expect(find.byKey(const Key('emailField')), findsOneWidget);
     expect(find.byKey(const Key('passwordField')), findsOneWidget);

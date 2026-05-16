@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../services/auth_service.dart';
-
-enum UserRole { user, staff, admin }
+import '../models/user_role.dart';
 
 /// Provider for authentication state management
 class AuthProvider extends ChangeNotifier {
@@ -32,12 +31,17 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> _init() async {
     await _authService.initialize();
-    // Listen to auth state changes
+    _userRole = _authService.getUserRole();
+    _isAuthenticated = _authService.isAuthenticated;
+    _userId = _authService.currentUserId;
+    _userEmail = _authService.currentUserEmail;
+    _userName = _authService.currentUserName;
     _authService.authStateChanges.listen((user) {
       _isAuthenticated = _authService.isAuthenticated;
       _userId = _authService.currentUserId;
       _userEmail = _authService.currentUserEmail;
       _userName = _authService.currentUserName;
+      _userRole = _authService.getUserRole();
       notifyListeners();
     });
   }
@@ -48,6 +52,7 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       await _authService.signInWithEmail(email, password);
+      _userRole = _authService.getUserRole();
       return true;
     } catch (e) {
       _setError(e.toString());
@@ -63,6 +68,7 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       await _authService.signUpWithEmail(email, password, name);
+      _userRole = _authService.getUserRole();
       return true;
     } catch (e) {
       _setError(e.toString());
