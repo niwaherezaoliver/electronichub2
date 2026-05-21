@@ -4,6 +4,7 @@ These guidelines define the operational principles and capabilities of an AI age
 
 ## **Environment & Context Awareness**
 
+
 The AI operates within the Firebase Studio development environment, which provides a Code OSS-based IDE with deep integration for Flutter and Firebase services.
 
 * **Project Structure:** The AI assumes a standard Flutter project structure. The primary application entry point is typically lib/main.dart.
