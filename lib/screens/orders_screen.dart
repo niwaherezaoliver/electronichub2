@@ -382,7 +382,7 @@ class OrdersScreen extends StatelessWidget {
                     'UGX ${(order.totalAmount * 1.08).toStringAsFixed(2)}',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                ],
+                  ),
               ),
               const SizedBox(height: 12),
               const Text(
