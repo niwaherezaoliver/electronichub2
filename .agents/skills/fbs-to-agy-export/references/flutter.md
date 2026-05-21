@@ -33,7 +33,6 @@ Run static analysis to verify code quality and identify potential errors.
 ```bash
 flutter analyze
 ```
-
 ### 5. Build Web Application
 Compile the Flutter application for the web platform.
 ```bash
@@ -41,7 +40,6 @@ flutter build web
 ```
 
 ## Verification and Troubleshooting
-
 *   **Verification**: The `flutter run --machine -d web-server` command (or the specific command found in `.idx/dev.nix`) should successfully launch and provide a local URL (e.g., `http://localhost:<port>`). Accessing this URL should display the application.
 *   **Error Handling**:
     *   **Dependency Errors**: If `flutter pub get` fails, examine `pubspec.yaml` for invalid dependency definitions or syntax errors.
